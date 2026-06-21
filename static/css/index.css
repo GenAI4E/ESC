@@ -325,11 +325,12 @@ body.dark .finding-box{box-shadow:0 8px 24px rgba(0,0,0,.45);}
   font-weight:700;color:var(--text);margin:.9rem auto 0;max-width:680px;text-wrap:balance;}
 @media(max-width:768px){.find-q-text{font-size:1.32rem;}}
 /* connective bridge between components, with a short vertical tick */
-.find-bridge{position:relative;max-width:640px;margin:1.8rem auto 0;padding-top:1.75rem;
-  text-align:center;font-size:1.02rem;line-height:1.62;color:var(--text-muted);}
-.find-bridge::before{content:"";position:absolute;top:0;left:50%;width:2px;height:1.05rem;
+.find-bridge{position:relative;max-width:720px;margin:1.9rem auto 0;padding-top:1.85rem;
+  text-align:center;font-size:1.28rem;line-height:1.55;color:var(--text-muted);text-wrap:balance;}
+.find-bridge::before{content:"";position:absolute;top:0;left:50%;width:2px;height:1.15rem;
   background:var(--border);transform:translateX(-50%);}
 .find-bridge b{color:var(--text);font-weight:700;}
+@media(max-width:768px){.find-bridge{font-size:1.12rem;}}
 
 /* image lightbox */
 .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;align-items:center;
