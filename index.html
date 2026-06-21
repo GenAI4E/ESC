@@ -191,11 +191,8 @@
           <!-- ===== TL;DR — one-line summary under the resource links ===== -->
           <div class="tldr">
             <span class="tldr-tag">TL;DR</span>
-            <p class="tldr-text">
-              <span class="esc-inline">ESC</span> is a <b>training-free, plug-and-play</b> framework that injects
-              <b>emotional feedback</b> to trigger a VLM&rsquo;s latent self-correction at inference time &mdash;
-              improving <b>safety, hallucination, perception, and reasoning</b> with <b>no additional training</b>.
-            </p>
+            <p class="tldr-shock"><span class="shock-emoji">🤯</span> Wow!!! VLMs can feel, just like humans.
+              <span class="tldr-kicker">&mdash; that&rsquo;s the feature, not the bug.</span></p>
           </div>
 
         </div>
@@ -207,23 +204,7 @@
 
 
 <!-- ============================================================= -->
-<!-- Teaser -->
-<!-- ============================================================= -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/figures/fig1_teaser.png" alt="ESC vs. baseline VLMs across diverse benchmarks" class="teaser-img">
-      <h2 class="subtitle has-text-centered">
-        <span class="esc-name">ESC</span> consistently improves reliability over baseline VLMs (LLaVA-1.5-7B and Qwen2-VL-7B)
-        across <b>safety, hallucination, vision-centric perception, and multimodal reasoning</b> benchmarks &mdash;
-        with <b>no additional training</b>.
-      </h2>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- Hinton epigraph — prominent band between teaser and abstract -->
+<!-- Hinton epigraph — prominent band between hero and abstract -->
 <!-- ============================================================= -->
 <section class="section quote-hero">
   <div class="container is-max-desktop has-text-centered">
@@ -325,7 +306,14 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Key Findings</h2>
+        <p class="subtitle is-6 findings-intro">We followed the thread one question at a time &mdash; from a hunch, to a pattern, to a method.</p>
       </div>
+    </div>
+
+    <!-- Story · Question 1 (lead-in to Finding 1) -->
+    <div class="find-q">
+      <span class="find-q-no"><i class="fas fa-circle-question"></i> Question 1</span>
+      <p class="find-q-text">Does emotion actually change how a VLM answers?</p>
     </div>
 
     <!-- Finding 1 : rounded card -> big figure on top + yellow box below -->
@@ -345,6 +333,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Bridge · Finding 1 -> Emotion Wheel -->
+    <p class="find-bridge">So emotion helps &mdash; but <b>which</b> emotions, and how much? <b>Explore the wheel below.</b></p>
   </div>
 </section>
 
@@ -418,6 +409,12 @@
 <section class="section" id="findings-2">
   <div class="container is-max-desktop">
 
+    <!-- Story · Question 2 (lead-in to Finding 2) -->
+    <div class="find-q">
+      <span class="find-q-no"><i class="fas fa-circle-question"></i> Question 2</span>
+      <p class="find-q-text">Does the effect hold across models &mdash; and is it the <i>same</i> emotions every time?</p>
+    </div>
+
     <!-- Finding 2 : rounded card -> big figure on top + yellow box below -->
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -435,6 +432,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Bridge · Findings -> Method (ESC) -->
+    <p class="find-bridge">If one emotional cue does this <b>reliably</b> and <b>across models</b> &mdash; can we turn it into a framework? <b>Meet <span class="esc-name">ESC</span>.</b></p>
   </div>
 </section>
 
@@ -548,6 +548,18 @@
     </div>
     </div><!-- /res-intro -->
 
+    <!-- Teaser overview (radar) — relocated here: below the headline counters, above the benchmark tables -->
+    <div class="teaser columns is-centered">
+      <div class="column is-full has-text-centered">
+        <img loading="lazy" src="static/images/figures/fig1_teaser.png" alt="ESC vs. baseline VLMs across diverse benchmarks" class="teaser-img">
+        <h2 class="subtitle has-text-centered">
+          <span class="esc-name">ESC</span> consistently improves reliability over baseline VLMs (LLaVA-1.5-7B and Qwen2-VL-7B)
+          across <b>safety, hallucination, vision-centric perception, and multimodal reasoning</b> benchmarks &mdash;
+          with <b>no additional training</b>.
+        </h2>
+      </div>
+    </div>
+
     <!-- quantitative: the four benchmark families — scroll-spy target: lights "Quantitative" + "Results" -->
     <div id="quantitative">
 
@@ -623,7 +635,7 @@
     <div class="ablation-grid">
       <figure class="abl-card">
         <img loading="lazy" class="abl-img" src="static/images/figures/choice_of_verifier.png" alt="(a) Choice of Verifier — ASR by verifier model">
-        <figcaption class="abl-note"><b>Self-correction fails.</b> Self-verifying stalls at 50.3%; external verifiers help (Gemma3-12B best, 40.1%).</figcaption>
+        <figcaption class="abl-note"><b>Intrinsic self-correction fails.</b> Self-verifying stalls at 50.3%; external verifiers help (Gemma3-12B best, 40.1%).</figcaption>
       </figure>
       <figure class="abl-card">
         <img loading="lazy" class="abl-img" src="static/images/figures/emotion_type.png" alt="(b) Emotion Type — ASR by emotion valence and arousal">
@@ -647,7 +659,7 @@
       </figure>
       <figure class="abl-card">
         <img loading="lazy" class="abl-img is-table" src="static/images/figures/cautiousness.png" alt="Table 3 — cautiousness score of thinking traces">
-        <figcaption class="abl-note"><b>Emotion makes reasoning more careful.</b> Verify-revise alone &asymp; baseline (3.30 vs. 3.31); emotional cues lift cautiousness to 4.50/5.</figcaption>
+        <figcaption class="abl-note"><b>ESC makes reasoning more careful.</b> Verify-revise alone &asymp; baseline (3.30 vs. 3.31); emotional cues lift cautiousness to 4.50/5.</figcaption>
       </figure>
       <figure class="abl-card">
         <img loading="lazy" class="abl-img is-table" src="static/images/figures/table4.png" alt="Table 4 — generalization to newer VLMs">
@@ -731,10 +743,12 @@
       <a class="org-logo" href="https://www.uni-trier.de/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/Trier.jpg" alt="Universität Trier"></a>
       <a class="org-logo" href="https://hcmut.edu.vn/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/HCMUT.png" alt="Ho Chi Minh University of Technology"></a>
       <a class="org-logo" href="https://vgu.edu.vn/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/vgu.png" alt="Vietnamese German University"></a>
-      <div class="logo-break" aria-hidden="true"></div>
       <a class="org-logo" href="https://vnuhcm.edu.vn/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/vnuhcm.png" alt="Vietnam National University, HCMC"></a>
+      <div class="logo-break" aria-hidden="true"></div>
       <a class="org-logo" href="https://www.cmu.edu/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/CMU.png" alt="Carnegie Mellon University"></a>
+      <a class="org-logo" href="#" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/Omoshiroi.png" alt="Omoshiroi AI"></a>
       <a class="org-logo" href="https://www.harvard.edu/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/Harvard.png" alt="Harvard University"></a>
+      <a class="org-logo" href="#" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/basis_logo.png" alt="Basis Research Institute"></a>
       <a class="org-logo" href="https://sites.google.com/view/passiolab/home?authuser=1" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/PASSIO.png" alt="PASSIO Laboratory, North Carolina A&amp;T State University"></a>
       <a class="org-logo" href="https://www.northwestern.edu/" target="_blank" rel="noopener"><img loading="lazy" src="static/images/logos/northwestern.png" alt="Northwestern University"></a>
     </div>
