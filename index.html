@@ -210,9 +210,20 @@
     <h2 class="title is-3">Video Overview</h2>
     <p class="subtitle is-6">A quick tour of <span class="esc-name">ESC</span> &mdash; what it does, and why a little emotion goes a long way.</p>
     <div class="video-frame">
-      <video class="video-embed" controls muted preload="metadata" playsinline src="static/video/finale.mov">
+      <video id="esc-video" class="video-embed" controls muted preload="metadata" playsinline controlsList="nodownload noplaybackrate" src="static/video/finale.mov">
         Your browser does not support the video tag.
       </video>
+      <script>
+        (function(){
+          var v = document.getElementById('esc-video');
+          if(!v) return;
+          v.muted = true; v.volume = 0;
+          // keep it silent no matter what — re-mute if anything tries to enable audio
+          v.addEventListener('volumechange', function(){
+            if(!v.muted || v.volume > 0){ v.muted = true; v.volume = 0; }
+          });
+        })();
+      </script>
     </div>
   </div>
 </section>
