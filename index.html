@@ -56,9 +56,7 @@
 <!-- ============================================================= -->
 <nav id="toc" class="toc-rail" aria-label="Section navigation">
   <ul>
-    <li><a href="#abstract"><span class="toc-text">Abstract</span><span class="toc-dot"></span></a></li>
     <li><a href="#video"><span class="toc-text">Video</span><span class="toc-dot"></span></a></li>
-    <li><a href="#motivation"><span class="toc-text">Motivation</span><span class="toc-dot"></span></a></li>
     <li><a href="#findings"><span class="toc-text">Key Findings</span><span class="toc-dot"></span></a></li>
     <li><a href="#method"><span class="toc-text">ESC Framework</span><span class="toc-dot"></span></a></li>
     <li><a href="#walkthrough"><span class="toc-text">How ESC Works</span><span class="toc-dot"></span></a></li>
@@ -69,6 +67,7 @@
         <li><a href="#ablation"><span class="toc-text">Ablation</span><span class="toc-dot"></span></a></li>
       </ul>
     </li>
+    <li><a href="#future"><span class="toc-text">Future</span><span class="toc-dot"></span></a></li>
     <li><a href="#share"><span class="toc-text">Share</span><span class="toc-dot"></span></a></li>
     <li><a href="#bibtex"><span class="toc-text">BibTeX</span><span class="toc-dot"></span></a></li>
   </ul>
@@ -204,7 +203,7 @@
 
 
 <!-- ============================================================= -->
-<!-- Hinton epigraph — prominent band between hero and abstract -->
+<!-- Hinton epigraph — prominent band between hero and video -->
 <!-- ============================================================= -->
 <section class="section quote-hero">
   <div class="container is-max-desktop has-text-centered">
@@ -212,39 +211,6 @@
       <span class="bq-mark">&ldquo;</span>
       <p class="bq-text">AI models can have feelings too</p>
       <p class="bq-cite">&mdash; Geoffrey Hinton, 2024</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- Abstract -->
-<!-- ============================================================= -->
-<section class="section" id="abstract">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Vision-language models (VLMs) have achieved strong performance across diverse multimodal tasks, yet they
-            remain vulnerable to hallucinations and unreliable reasoning. Existing self-correction methods mitigate these
-            issues but typically rely on post-training or carefully engineered feedback, incurring high computational
-            cost. In this work, we revisit this challenge through the lens of <b>emotional cues</b>, asking whether they
-            can activate latent self-correction behaviors in VLMs without additional training. We find that emotional
-            signals serve as an effective trigger for self-correction, encouraging more cautious and reflective reasoning.
-          </p>
-          <p>
-            Motivated by this finding, we propose <span class="esc-inline">ESC</span><img src="static/images/corgi_logo.png" alt="ESC corgi" class="esc-corgi-inline"> (<span class="esc-inline">E</span>motional <span class="esc-inline">S</span>elf-<span class="esc-inline">C</span>orrection), a
-            training-free self-correction framework. <span class="esc-inline">ESC</span> introduces an external <b>verifier</b> that detects potentially
-            incorrect initial responses and injects <b>emotional feedback</b> to encourage the model to reflect, and
-            produce a better revised response without additional training. Extensive experiments across safety,
-            hallucination, vision-centric perception, and multimodal reasoning benchmarks show that <span class="esc-inline">ESC</span> consistently
-            improves reliability and task performance while preserving overall model utility. These results suggest that
-            emotion can function not only as a capability to be recognized, but also as a practical <b>control signal</b>
-            for scalable self-correction in VLMs.
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -263,37 +229,6 @@
         <span class="video-play"><i class="fas fa-play"></i></span>
         <span class="video-soon">Overview video &mdash; coming soon</span>
       </button>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- Motivation (VisualMem-style 3-card layout) -->
-<!-- ============================================================= -->
-<section class="section" id="motivation">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Motivation</h2>
-        <p class="subtitle is-6">Why do reliable VLMs still need a <b>cheaper</b> way to self-correct? Three observations motivate <span class="esc-name">ESC</span>.</p>
-      </div>
-    </div>
-    <div class="motiv-cards">
-      <div class="motiv-card">
-        <span class="motiv-tag">Problem</span>
-        <h3 class="motiv-title">VLMs are still unreliable</h3>
-        <p class="motiv-text">Despite strong multimodal performance, VLMs keep <b>hallucinating</b>, returning <b>unsafe</b> answers, and grounding responses weakly in the image &mdash; a real risk as they reach deployments like healthcare, autonomous driving, and security.</p>
-      </div>
-      <div class="motiv-card">
-        <span class="motiv-tag">Limitation</span>
-        <h3 class="motiv-title">Fixing this is costly &mdash; and hits a ceiling</h3>
-        <p class="motiv-text">Existing self-correction leans on <b>post-training</b>, RL, or hand-crafted reflective trajectories, all expensive to scale. And models rarely fix <i>their own</i> mistakes &mdash; the <b>self-correction blind spot</b> caps intrinsic correction.</p>
-      </div>
-      <div class="motiv-card">
-        <span class="motiv-tag">Our Insight</span>
-        <h3 class="motiv-title">Emotion can trigger reflection for free</h3>
-        <p class="motiv-text">Just as <b>concern</b> or <b>hesitation</b> make people slow down and reconsider, emotional cues can activate a VLM&rsquo;s <b>latent self-correction</b> at inference time &mdash; reflective, reliable, and with <b>no training required</b>.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -464,11 +399,10 @@
 
     <div class="columns is-centered">
       <div class="column is-full has-text-centered">
-        <img loading="lazy" src="static/images/figures/fig2_overview.png" alt="Overview of ESC and comparison with existing self-correction paradigms" class="method-img">
-        <p class="caption">Overview of <b>ESC</b> and comparison with existing self-correction paradigms.
-          (a) Example multimodal reasoning task. (b) Motivation from human behavior: emotional cues encourage people to
-          slow down, reflect, and revise. (c) Existing self-correction relies on costly post-training. (d) <b>Ours</b> —
-          ESC injects emotion-aware feedback at inference time: lightweight, plug-and-play.</p>
+        <img loading="lazy" src="static/images/figures/algo.png" alt="Algorithm 1 — Emotional Self-Correction (ESC)" class="method-img" style="max-width:860px;">
+        <p class="caption"><span class="esc-name">ESC</span> introduces an external <b>verifier</b> that detects potentially incorrect
+          initial responses and injects <b>emotionally informed feedback</b> to encourage the model to slow down, reflect,
+          and produce a better revised answer without additional post-training.</p>
       </div>
     </div>
 
@@ -667,6 +601,53 @@
       </figure>
     </div>
     </div><!-- /ablation -->
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- Open Directions — What's Next -->
+<!-- ============================================================= -->
+<section class="section" id="future">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">What&rsquo;s Next?</h2>
+        <p class="subtitle is-6">
+          Our results point to several open directions where <b>emotion becomes a control signal</b> &mdash; structured cues
+          that regulate behavior, trigger cautious reasoning, and activate latent self-correction in VLMs.
+        </p>
+      </div>
+    </div>
+
+    <div class="dir-list">
+      <div class="dir-card" style="--dir:#e0556b;">
+        <span class="dir-ico">💬</span>
+        <div class="dir-body">
+          <h3 class="dir-title">Multi-Turn, Conversational Self-Correction</h3>
+          <p class="dir-text">Extend correction from a <b>single revision step</b> to multi-turn, conversational self-correction &mdash; models that revise more naturally over the course of an interaction, closer to how humans reflect and adjust under different <b>emotional and social contexts</b>.</p>
+        </div>
+      </div>
+      <div class="dir-card" style="--dir:#2f9e93;">
+        <span class="dir-ico">🎯</span>
+        <div class="dir-body">
+          <h3 class="dir-title">Context-Adaptive Emotion Selection</h3>
+          <p class="dir-text">Instead of a fixed emotional strategy, future systems could <b>adapt the affective signal</b> to the moment &mdash; choosing the most effective cue from the <b>question type, uncertainty level, task domain, or failure mode</b>.</p>
+        </div>
+      </div>
+      <div class="dir-card" style="--dir:#8b5cf6;">
+        <span class="dir-ico">🧩</span>
+        <div class="dir-body">
+          <h3 class="dir-title">Emotion as a Missing Inference Primitive</h3>
+          <p class="dir-text">Emotion should no longer be viewed solely as a capability to recognize or express, but as a <b>missing component in the inference pipeline</b> &mdash; one that mediates <i>when, why, and how</i> a model should reconsider its own reasoning.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="future-quote">We believe <span class="esc-name">ESC</span> provides a strong foundation for future work on controllable and reliable multimodal intelligence.</p>
+      </div>
+    </div>
   </div>
 </section>
 
