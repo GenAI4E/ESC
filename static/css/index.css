@@ -193,6 +193,20 @@ a{color:var(--accent);}
   background:linear-gradient(90deg,#e23c3c,#e8590c,#e6a817,#2b9d5d,#1c6dd0,#6741d9,#c2255c);
   color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:0 3px 14px rgba(0,0,0,.18);
 }
+.presentation-ribbon{
+  display:flex;align-items:center;justify-content:center;gap:13px;width:max-content;max-width:100%;
+  margin:-.1rem auto 1.1rem;padding:6px 18px;
+  font-size:1.5rem;font-weight:800;letter-spacing:.01em;
+  color:var(--esc);
+  background:linear-gradient(92deg,#e8920f 0%,#f7c948 45%,#ffd76a 50%,#f7c948 55%,#e8920f 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:escShine 5s linear infinite;
+  filter:drop-shadow(0 3px 6px color-mix(in srgb,#d78b12 26%,transparent));
+  transition:transform .2s ease;
+}
+.presentation-ribbon:hover{transform:translateY(-2px) scale(1.025);}
+.presentation-ribbon i{font-size:1.32rem;}
+@media(max-width:480px){.presentation-ribbon{font-size:1.1rem;gap:9px;padding:5px 10px;}.presentation-ribbon i{font-size:1rem;}}
 
 .publication-authors{margin:.7rem 0 .2rem;}
 .author-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:2px 9px;margin:3px 0;}
